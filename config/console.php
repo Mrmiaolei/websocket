@@ -25,14 +25,6 @@ $config = [
                 ],
             ],
         ],
-        'websocket' => [
-            'class' => '\yiiplus\websocket\swoole\WebSocket',
-            'host' => '127.0.0.1',
-            'port' => 9501,
-            'channels' => [
-                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
-            ],
-        ],
         'db' => $db,
         'websocket' => [
             'class' => '\yiiplus\websocket\swoole\WebSocket',
@@ -42,6 +34,10 @@ $config = [
                 'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
             ],
         ],
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn' => 'mongodb://username:password@localhost:27017/test'
+        ]
     ],
     'params' => $params,
     'controllerMap' => [

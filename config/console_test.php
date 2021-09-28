@@ -47,6 +47,10 @@ $config = [
                 'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
             ],
         ],
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn' => 'mongodb://username:password@localhost:27017/test'
+        ]
     ],
     'params' => $params,
     /*

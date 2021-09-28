@@ -65,6 +65,10 @@ $config = [
             'port'     => 6379,
             'database' => 0
         ],
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn' => 'mongodb://username:password@localhost:27017/test'
+        ]
     ],
     'params'     => $params,
     'bootstrap' => [
