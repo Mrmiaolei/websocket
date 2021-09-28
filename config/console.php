@@ -6,7 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','websocket'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -25,16 +25,35 @@ $config = [
                 ],
             ],
         ],
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
+            ],
+        ],
         'db' => $db,
-    ],
-    'params' => $params,
-    /*
-    'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\faker\FixtureController',
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
+            ],
         ],
     ],
-    */
+    'params' => $params,
+    'controllerMap' => [
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
+            ],
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

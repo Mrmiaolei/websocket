@@ -71,6 +71,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        Yii::$app->websocket->send(['channel' => 'push-message', 'message' => '用户 xxx 送了一辆坦克！']);
+        return true;
+
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return [
             'code' => 123,

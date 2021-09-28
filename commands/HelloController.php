@@ -26,7 +26,7 @@ class HelloController extends Controller
      * @return int Exit code
      */
     public function actionIndex($message = 'hello world')
-    {
+    {echo "<pre>";print_r(get_declared_classes());die;
         echo $message . "\n";
 
         return ExitCode::OK;

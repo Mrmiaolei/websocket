@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bb981b9fc214179b921f12daf463912",
+    "content-hash": "698bec663df3d58a68e5e4b6315853db",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -758,50 +758,48 @@
             "time": "2021-05-27T09:17:38+00:00"
         },
         {
-            "name": "workerman/workerman",
-            "version": "v4.0.19",
+            "name": "yiiplus/yii2-websocket",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/walkor/Workerman.git",
-                "reference": "af6025976fba817eeb4d5fbf8d0c1059a5819da3"
+                "url": "https://github.com/yiiplus/yii2-websocket.git",
+                "reference": "7098989975ec08d19bb03456a6544e193bc3320d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walkor/Workerman/zipball/af6025976fba817eeb4d5fbf8d0c1059a5819da3",
-                "reference": "af6025976fba817eeb4d5fbf8d0c1059a5819da3",
+                "url": "https://api.github.com/repos/yiiplus/yii2-websocket/zipball/7098989975ec08d19bb03456a6544e193bc3320d",
+                "reference": "7098989975ec08d19bb03456a6544e193bc3320d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "yiisoft/yii2": "~2.0.0"
             },
-            "suggest": {
-                "ext-event": "For better performance. "
-            },
-            "type": "library",
+            "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "Workerman\\": "./"
+                    "yiiplus\\websocket\\": "src",
+                    "yiiplus\\websocket\\swoole\\": "src/drivers/swoole",
+                    "yiiplus\\websocket\\workerman\\": "src/drivers/workerman"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "Apache-2.0"
             ],
             "authors": [
                 {
-                    "name": "walkor",
-                    "email": "walkor@workerman.net",
-                    "homepage": "http://www.workerman.net",
-                    "role": "Developer"
+                    "name": "gengxiankun",
+                    "email": "gengxiankun@126.com"
                 }
             ],
-            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
-            "homepage": "http://www.workerman.net",
+            "description": "使用yii2封装 websocket 扩展",
             "keywords": [
-                "asynchronous",
-                "event-loop"
+                "extension",
+                "swoole",
+                "websocket",
+                "yii2"
             ],
-            "time": "2021-03-05T06:44:28+00:00"
+            "time": "2019-01-30T07:32:09+00:00"
         },
         {
             "name": "yiisoft/yii2",

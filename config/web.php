@@ -19,6 +19,14 @@ $config = [
         'mailer'     => [
             'useFileTransport' => true,
         ],
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
@@ -59,6 +67,9 @@ $config = [
         ],
     ],
     'params'     => $params,
+    'bootstrap' => [
+        'websocket'
+    ],
 ];
 
 return $config;

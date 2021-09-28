@@ -9,15 +9,15 @@ $db     = require __DIR__ . '/test_db.php';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','websocket'],
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
-        'workerman-web-socket' => [
-            'class' => 'app\commands\WorkermanWebSocketController',
-            'config' => [
-                'ip' => '127.0.0.1',
-                'port' => '2346',
-                'daemonize' => true,
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
             ],
         ],
     ],
@@ -39,6 +39,14 @@ $config = [
             ],
         ],
         'db' => $db,
+        'websocket' => [
+            'class' => '\yiiplus\websocket\swoole\WebSocket',
+            'host' => '127.0.0.1',
+            'port' => 9501,
+            'channels' => [
+                'push-message' => '\socket\channels\PushMessageChannel', // 配置 channel 对应的执行类
+            ],
+        ],
     ],
     'params' => $params,
     /*

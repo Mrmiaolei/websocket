@@ -1,19 +1,37 @@
-<script>
- // Create WebSocket connection.
- const ws = new WebSocket('ws://127.0.0.1:2346/'); // 这里是获取的网站的域名，测试的时候可以改为自己的本地的ip地址
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+</head>
+<body>
+    <h1>Echo Test</h1>
+    <input type="text" id="sendTxt">
+    <button id="sendBtn">发送</button>
+    <div id="recv"></div>
+    <script type="text/javascript">
+        var websocket = new WebSocket("ws://127.0.0.1:9501/");
+        websocket.onopen = function(){
+            // websocket.binaryType = 'arraybuffer';
+            console.log("websocket open");
+            document.getElementById("recv").innerHTML = "Connected";
+        }
+        websocket.inclose = function(){
+            console.log('websocket close');
+        }
+        websocket.onmessage = function(e){
+            console.log(e.data);
+            document.getElementById("recv").innerHTML = e.data;
+        }
+        document.getElementById("sendBtn").onclick = function(){
+            var txt = document.getElementById("sendTxt").value;
+            var arr=new Array();
+            arr['channel']="push-message";
+            arr['message']="用户 xxx 送了一台飞机！";
 
- // Connection opened
- ws.addEventListener('open', function (event) {
- ws.send('Hello Server!');
- });
+            websocket.send(JSON.stringify({"channel": "push-message", "message":"用户 xxx 送了一台飞机！"}));
+        }
 
- // Listen for messages
- ws.addEventListener('message', function (event) {
- console.log('Message from server ', event.data);
- });
-
- setTimeout(function() {
- ws.send('ssssss');
- }, 10000);
-
-</script>
+    </script>
+</body>
+</html>
